@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import localStorageService from "../../service/localStorage.service";
 import configFile from "../../config/config.json";
@@ -50,25 +49,12 @@ const OrdersList = () => {
                                                     <TableBody data={order} />
                                                 </table>
                                             </div>
-
-                                            <NavLink
-                                                to="/"
-                                                className="btn btn-primary"
-                                            >
-                                            На главную страницу
-                                            </NavLink>
                                         </>
                                     )
                                     : order && order.length === 0
                                         ? (
                                             <>
                                                 <h2>У Вас не было еще заказов!</h2>
-                                                <NavLink
-                                                    to="/"
-                                                    className="btn btn-primary mt-3"
-                                                >
-                                            На главную страницу
-                                                </NavLink>
                                             </>
                                         )
                                         : (

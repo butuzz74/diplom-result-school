@@ -33,13 +33,17 @@ const EditGoodsList = () => {
     const goodsRedux = useSelector(getGoodsRedux());
     useEffect(() => {
         setGoods(goodsRedux);
+        setCardsChoice(goodsRedux);
     }, [goodsRedux]);
+
     const handleCategoryItems = (cat) => {
         setCardsCategory(goods.filter((card) => card.category === cat));
+        setCardsChoice(goods.filter((card) => card.category === cat));
         setActivePage(1);
     };
     const handleOnBack = () => {
         setCardsCategory();
+        setCardsChoice(goodsRedux);
     };
     const handleOnSearch = (e) => {
         setValue(e.target.value);
@@ -49,7 +53,7 @@ const EditGoodsList = () => {
     };
 
     useEffect(() => {
-        goods &&
+        if (!cardsCategory) {
             setCardsChoice(
                 goods.filter(
                     (elem) =>
@@ -67,6 +71,25 @@ const EditGoodsList = () => {
                             .includes(value.split(" ").join("").toLowerCase())
                 )
             );
+        } else {
+            setCardsChoice(
+                cardsCategory.filter(
+                    (elem) =>
+                        elem.type
+                            .split(" ")
+                            .join("")
+                            .toLowerCase()
+                            .includes(
+                                value.split(" ").join("").toLowerCase()
+                            ) ||
+                        elem.model
+                            .split(" ")
+                            .join("")
+                            .toLowerCase()
+                            .includes(value.split(" ").join("").toLowerCase())
+                )
+            );
+        }
     }, [value]);
     const handleActivePage = (page) => {
         setActivePage(page);
@@ -79,31 +102,15 @@ const EditGoodsList = () => {
             : goods
                 ? Math.ceil(goods.length / countItemOnPage)
                 : 0;
-    const itemForPage =
-        cardChoice.length !== 0 && goods.length !== 0
-            ? [...cardChoice]
-            : [...goods];
-    const itemForPageCategory = cardsCategory && [...cardsCategory];
+
+    const itemForPage = [...cardChoice];
 
     const pagination = (arr, num) => {
-        if (arr && arr.length !== 0) {
-            const arrPage = arr.splice(
-                (num - 1) * countItemOnPage,
-                countItemOnPage
-            );
-            if (arr && arrPage.length === 0) {
-                setActivePage((prevState) => prevState - 1);
-            }
-            return arrPage;
-        }
+        return arr && arr.splice((num - 1) * countItemOnPage, countItemOnPage);
     };
-
     const itemOnPage = pagination(itemForPage, activePage);
-    const itemOnPageCategory = pagination(itemForPageCategory, activePage);
 
-    return !isGoodLoading &&
-        goods.length !== 0 &&
-        (itemOnPage || itemOnPageCategory)
+    return !isGoodLoading
         ? (
             <div className="main py-3 px-3">
                 <div className="d-flex justify-content-end align-items-baseline ">
@@ -114,32 +121,40 @@ const EditGoodsList = () => {
                     >
                     Добавить
                     </Button>
-                    <Button
-                        className={"btn btn-success mt-2 ms-2"}
-                        onClick={() => history.push("/")}
-                    >
-                    На главную страницу
-                    </Button>
                 </div>
-                <div className="content">
-                    <CategoriesList
-                        cardsInfo={goods}
-                        onCategoryItems={handleCategoryItems}
-                        onBack={handleOnBack}
-                    />
-                    <CardList
-                        cardsInfo={
-                            itemOnPageCategory || itemOnPage
-                        }
-                        path={path}
-                        onDelete={handleDeleteGood}
-                    />
-                </div>
-                <Pagination
-                    countPage={countPage}
-                    activePage={activePage}
-                    onActivePage={handleActivePage}
-                />
+                {itemOnPage && itemOnPage.length !== 0
+                    ? (<><div className="content">
+                        <CategoriesList
+                            cardsInfo={goods}
+                            onCategoryItems={handleCategoryItems}
+                            onBack={handleOnBack}
+                        />
+                        <CardList
+                            cardsInfo={
+                                itemOnPage
+                            }
+                            path={path}
+                            onDelete={handleDeleteGood}
+                        />
+                    </div>
+                    <Pagination
+                        countPage={countPage}
+                        activePage={activePage}
+                        onActivePage={handleActivePage}
+                    /></>)
+                    : (
+                        <div className="d-flex justify-content-center align-items-center">
+                            <div className="row justify-content-md-center">
+                                <div className="col-md-auto md-3 p-4 shadow mt-5 bg-white mb-5 rounded-4">
+                                    <div className="d-flex justify-content-center">
+                                        <div className="d-flex  flex-column mx-auto justify-content-center align-items-center mt-2">
+                                            <h2>Товар не найден</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
             </div>
         )
         : (

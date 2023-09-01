@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { validator } from "../../utils/validator";
 import { validatorConfig } from "../../config/config";
@@ -91,17 +91,6 @@ const SignUp = () => {
                                 Отправить
                             </button>
                         </form>
-                        <div className="d-flex justify-content-between">
-                            <button type="button" className="btn btn-primary">
-                                <NavLink
-                                    to="/"
-                                    className="nav-link text-decoration-underline d-flex justify-content-center"
-                                >
-                                    {" "}
-                                    На гавную страницу
-                                </NavLink>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>

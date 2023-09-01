@@ -1,6 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Button from "../common/Button";
 
 const AboutUs = () => {
     return (
@@ -169,16 +167,6 @@ const AboutUs = () => {
                     </p>
                 </div>
             </div>
-            <Button className={"btn btn-success mb-3"}>
-                <NavLink
-                    to="/"
-                    className="nav-link text-decoration-underline"
-                    activeClassName="selected"
-                    style={{ color: "white" }}
-                >
-                    На главную страницу
-                </NavLink>
-            </Button>
         </div>
     );
 };

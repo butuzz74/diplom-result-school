@@ -18,10 +18,20 @@ const NavBar = () => {
     return (
         <div className="navbar">
             <div className="navheader text-white">
-                <p>OOO Системы отображения информации </p>
+                <p> OOO Системы отображения информации </p>
             </div>
             <div className="navline">
                 <ul className="nav nav-pills mt-2 d-flex justify-content-center me-5">
+                    <li className="nav-item">
+                        <NavLink
+                            to="/"
+                            className="nav-link text-decoration-underline"
+                            activeClassName="selected"
+                            style={{ color: "white" }}
+                        >
+                            На главную страницу
+                        </NavLink>
+                    </li>
                     <li className="nav-item">
                         <NavLink
                             to="/paymentAndDelivery"

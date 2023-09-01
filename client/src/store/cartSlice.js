@@ -1,11 +1,19 @@
 import { createSlice, createAction } from "@reduxjs/toolkit";
 
-const initialState = {
-    entities: {
-        countCart: 0,
-        selectedGood: []
-    }
-};
+const initialState =
+    JSON.parse(!localStorage.getItem("order"))
+        ? {
+            entities: {
+                countCart: 0,
+                selectedGood: []
+            }
+        }
+        : {
+            entities: {
+                countCart: JSON.parse(localStorage.getItem("order")).length,
+                selectedGood: JSON.parse(localStorage.getItem("order"))
+            }
+        };
 
 const cartSlice = createSlice({
     name: "cart",

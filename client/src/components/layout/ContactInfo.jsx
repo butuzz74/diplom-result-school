@@ -1,6 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Button from "../common/Button";
 
 const ContactInfo = () => {
     return (
@@ -137,16 +135,6 @@ const ContactInfo = () => {
                     style={{ border: "0", width: "100%", height: "400px" }}
                 ></iframe>
             </div>
-            <Button className={"btn btn-success mb-4"}>
-                <NavLink
-                    to="/"
-                    className="nav-link text-decoration-underline"
-                    activeClassName="selected"
-                    style={{ color: "white" }}
-                >
-                    На главную страницу
-                </NavLink>
-            </Button>
         </div>
     );
 };

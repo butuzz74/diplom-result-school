@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { validator } from "../../utils/validator";
 import { validatorConfig } from "../../config/config";
@@ -72,34 +72,25 @@ const SignIn = () => {
                                     <span>Must be 8-20 characters long.</span>
                                 </div>
                             </div>
-                            <button
-                                type="submit"
-                                className="btn btn-primary mb-3"
-                                disabled={!isValid}
-                            >
-                                Отправить
-                            </button>
+                            <div className="d-flex justify-content-between">
+                                <button
+                                    type="submit"
+                                    className="btn btn-primary mb-3"
+                                    disabled={!isValid}
+                                >
+                                    Отправить
+                                </button>
+                                <div>
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick={() => history.push("/signup")}
+                                    >
+                                        Зарегистрироваться
+                                    </button>
+                                </div>
+                            </div>
                         </form>
-                        <div className="d-flex justify-content-between">
-                            <button type="button" className="btn btn-primary">
-                                <NavLink
-                                    to="/signup"
-                                    className="nav-link text-decoration-underline d-flex justify-content-center text-white"
-                                >
-                                    {" "}
-                                    Зарегистрироваться
-                                </NavLink>
-                            </button>
-                            <button type="button" className="btn btn-primary">
-                                <NavLink
-                                    to="/"
-                                    className="nav-link text-decoration-underline d-flex justify-content-center"
-                                >
-                                    {" "}
-                                    На главную страницу
-                                </NavLink>
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>

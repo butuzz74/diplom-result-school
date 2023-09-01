@@ -1,6 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Button from "../common/Button";
 
 const PaymentAndDelivery = () => {
     return (
@@ -172,16 +170,6 @@ const PaymentAndDelivery = () => {
                     <p>Могилевская область</p>
                 </div>
             </div>
-            <Button className={"btn btn-success mb-4"}>
-                <NavLink
-                    to="/"
-                    className="nav-link text-decoration-underline"
-                    activeClassName="selected"
-                    style={{ color: "white" }}
-                >
-                    На главную страницу
-                </NavLink>
-            </Button>
         </div>
     );
 };
