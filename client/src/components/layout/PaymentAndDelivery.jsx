@@ -1,4 +1,5 @@
 import React from "react";
+import configFile from "../../config/config.json";
 
 const PaymentAndDelivery = () => {
     return (
@@ -20,7 +21,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -30,7 +31,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -40,7 +41,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -50,7 +51,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -71,7 +72,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -88,11 +89,11 @@ const PaymentAndDelivery = () => {
             >
                 Регионы доставки
             </p>
-            <div className="mt-4">
+            <div className="mt-4 mb-3">
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -102,7 +103,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -112,7 +113,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -122,7 +123,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -132,7 +133,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -142,7 +143,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -152,7 +153,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}
@@ -162,7 +163,7 @@ const PaymentAndDelivery = () => {
                 <div className="d-flex align-items-baseline">
                     <img
                         src={
-                            "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg"
+                            configFile.markBirdRed
                         }
                         alt="images"
                         style={{ width: "1rem" }}

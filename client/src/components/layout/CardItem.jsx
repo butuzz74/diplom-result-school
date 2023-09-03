@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCart, addGood, getCountCart } from "../../store/cartSlice";
 import {
     getGoodsById,
-    getGoodsById1,
+    getGoodsByIdFromRemoveBase,
     loadGoodById
 } from "../../store/goodsSlice";
 import { MainPageContext } from "../../context/context";
@@ -24,7 +24,7 @@ const CardItem = () => {
             dispatch(loadGoodById(cardId));
         }
     }, []);
-    const cardNoExisting = useSelector(getGoodsById1());
+    const cardNoExisting = useSelector(getGoodsByIdFromRemoveBase());
     const card = cardExisting || cardNoExisting;
     const { getAccessInCart } = useContext(MainPageContext);
     const handleCountCart = (card) => {

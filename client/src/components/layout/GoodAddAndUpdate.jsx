@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { validator } from "../../utils/validator";
 import { validatorConfig } from "../../config/config";
-import { createGood, getGoodsById, getGoodsById1, loadGoodById, updatedGoods } from "../../store/goodsSlice";
+import { createGood, getGoodsById, getGoodsByIdFromRemoveBase, loadGoodById, updatedGoods } from "../../store/goodsSlice";
 import configFile from "../../config/config.json";
 import TextField from "../form/TextField";
 import TextAreaField from "../form/TextAreaField";
@@ -34,7 +34,7 @@ const GoodAddAndUpdate = () => {
             dispatch(loadGoodById(cardId));
         }
     }, []);
-    const selectGoodUpdate = useSelector(getGoodsById1());
+    const selectGoodUpdate = useSelector(getGoodsByIdFromRemoveBase());
     const selectGood = selectGoodExisting || selectGoodUpdate;
     useEffect(() => {
         setData((prevState) => ({ ...prevState, ...selectGood }));
@@ -62,6 +62,7 @@ const GoodAddAndUpdate = () => {
         } else {
             const newGood = { ...data };
             dispatch(createGood(newGood));
+            setData(initialState);
         }
         history.push("/cardaddgood");
     };

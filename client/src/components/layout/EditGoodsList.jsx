@@ -7,6 +7,7 @@ import {
     getGoodsRedux,
     loadGoodsForAdmin
 } from "../../store/goodsSlice";
+import { paginate } from "../../utils/paginate";
 import CardList from "../main/CardList";
 import Pagination from "../main/Pagination";
 import Search from "../main/Search";
@@ -21,7 +22,6 @@ const EditGoodsList = () => {
     const history = useHistory();
     const path = location.pathname;
     const countItemOnPage = 4;
-    const [goods, setGoods] = useState([]);
     const [cardsCategory, setCardsCategory] = useState();
     const [cardChoice, setCardsChoice] = useState([]);
     const [activePage, setActivePage] = useState(1);
@@ -32,13 +32,12 @@ const EditGoodsList = () => {
     }, []);
     const goodsRedux = useSelector(getGoodsRedux());
     useEffect(() => {
-        setGoods(goodsRedux);
         setCardsChoice(goodsRedux);
     }, [goodsRedux]);
 
     const handleCategoryItems = (cat) => {
-        setCardsCategory(goods.filter((card) => card.category === cat));
-        setCardsChoice(goods.filter((card) => card.category === cat));
+        setCardsCategory(goodsRedux.filter((card) => card.category === cat));
+        setCardsChoice(goodsRedux.filter((card) => card.category === cat));
         setActivePage(1);
     };
     const handleOnBack = () => {
@@ -55,7 +54,7 @@ const EditGoodsList = () => {
     useEffect(() => {
         if (!cardsCategory) {
             setCardsChoice(
-                goods.filter(
+                goodsRedux.filter(
                     (elem) =>
                         elem.type
                             .split(" ")
@@ -99,16 +98,18 @@ const EditGoodsList = () => {
         ? Math.ceil(cardsCategory.length / countItemOnPage)
         : cardChoice.length !== 0
             ? Math.ceil(cardChoice.length / countItemOnPage)
-            : goods
-                ? Math.ceil(goods.length / countItemOnPage)
+            : goodsRedux
+                ? Math.ceil(goodsRedux.length / countItemOnPage)
                 : 0;
 
     const itemForPage = [...cardChoice];
 
-    const pagination = (arr, num) => {
-        return arr && arr.splice((num - 1) * countItemOnPage, countItemOnPage);
-    };
-    const itemOnPage = pagination(itemForPage, activePage);
+    // const pagination = (arr, num) => {
+    //     return arr && arr.splice((num - 1) * countItemOnPage, countItemOnPage);
+    // };
+
+    // const itemOnPage = pagination(itemForPage, activePage);
+    const itemOnPage = paginate(itemForPage, activePage, countItemOnPage, setActivePage);
 
     return !isGoodLoading
         ? (
@@ -123,25 +124,27 @@ const EditGoodsList = () => {
                     </Button>
                 </div>
                 {itemOnPage && itemOnPage.length !== 0
-                    ? (<><div className="content">
-                        <CategoriesList
-                            cardsInfo={goods}
-                            onCategoryItems={handleCategoryItems}
-                            onBack={handleOnBack}
-                        />
-                        <CardList
-                            cardsInfo={
-                                itemOnPage
-                            }
-                            path={path}
-                            onDelete={handleDeleteGood}
-                        />
-                    </div>
-                    <Pagination
-                        countPage={countPage}
-                        activePage={activePage}
-                        onActivePage={handleActivePage}
-                    /></>)
+                    ? (
+                        <>
+                            <div className="content">
+                                <CategoriesList
+                                    cardsInfo={goodsRedux}
+                                    onCategoryItems={handleCategoryItems}
+                                    onBack={handleOnBack}
+                                />
+                                <CardList
+                                    cardsInfo={itemOnPage}
+                                    path={path}
+                                    onDelete={handleDeleteGood}
+                                />
+                            </div>
+                            <Pagination
+                                countPage={countPage}
+                                activePage={activePage}
+                                onActivePage={handleActivePage}
+                            />
+                        </>
+                    )
                     : (
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="row justify-content-md-center">

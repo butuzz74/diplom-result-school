@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Search = ({ value, onSearch }) => {
     return (
-        <div className="mb-3 me-3 float-end" style={{ width: "30%" }}>
+        <div className="input mb-3 me-3 float-end" style={{ width: "30%" }}>
             <input
                 type="search"
                 className="form-control"

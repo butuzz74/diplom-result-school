@@ -26,12 +26,12 @@ const goodsSlice = createSlice({
             state.isLoading = false;
         },
         goodByIdReceived: (state, action) => {
-            state.entities.goodById = action.payload;
+            state.entities.goods = [...action.payload];
             state.isLoading = false;
         },
         create: (state, action) => {
-            state.entities.goods.push(action.payload);
             state.isLoading = false;
+            state.entities.goods = [...state.entities.goods, action.payload];
         },
         deleteGood: (state, action) => {
             state.isLoading = false;
@@ -42,7 +42,9 @@ const goodsSlice = createSlice({
         },
         update: (state, action) => {
             state.isLoading = false;
-            state.entities.goods.push(action.payload);
+            const a = state.entities.goods.push(action.payload);
+            state.entities.goods = a;
+            return state.entities.goods;
         }
     }
 });
@@ -54,8 +56,7 @@ const {
     goodByIdReceived,
     goodsRequestFailed,
     create,
-    deleteGood,
-    update
+    deleteGood
 } = actions;
 
 export const loadGoods = () => async(dispatch) => {
@@ -119,7 +120,7 @@ export const updatedGoods = (id, data) => async(dispatch) => {
     try {
         const content = await goodsService.update(id, data);
         dispatch(deleteGood(id));
-        dispatch(update(content));
+        dispatch(create(content));
     } catch (error) {
         dispatch(goodsRequestFailed(error.message));
     }
@@ -132,6 +133,7 @@ export const getGoodsById = (userId) => (state) => {
         return state.goods.entities.goods.find((u) => u._id === userId);
     }
 };
-export const getGoodsById1 = () => (state) => state.goods.entities.goodById;
+export const getGoodsByIdFromRemoveBase = () => (state) =>
+    state.goods.entities.goodById;
 
 export default goodsReducer;

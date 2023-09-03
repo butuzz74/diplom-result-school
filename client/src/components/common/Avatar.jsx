@@ -14,7 +14,7 @@ const Avatar = ({ avatarName, logOut }) => {
     };
 
     return (
-        <div className="btn-group dropstart me-5">
+        <div className="avatar btn-group dropstart me-5">
             <button
                 type="button"
                 className={

@@ -11,7 +11,8 @@ router.get("/:path?", async (req, res) => {
             res.status(200).send(list);
         } else if (path === "cardaddgood") {
             const list = await Good.find();
-            res.status(200).send(list);
+            const list1 = await Good.find();           
+            res.status(200).send(list1);
         } else {
             const good = await Good.findOne({ _id: path }); 
             if(!good){
@@ -44,8 +45,9 @@ router.get("/:path?", async (req, res) => {
 // });
 router.post("/", auth, async (req, res) => {
     try {
-        const newGood = await Good.create({ ...req.body });
+        const newGood = await Good.create({ ...req.body });        
         res.status(201).send(newGood);
+        console.log(newGood)
     } catch (error) {
         res.status(500).json({
             message: "На сервере произошла ошибка. Попробуйте позже!"

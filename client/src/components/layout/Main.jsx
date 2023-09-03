@@ -118,7 +118,7 @@ const Main = () => {
     return !isGoodLoading
         ? (
             <div className="main py-3 px-3">
-                <div className="d-flex justify-content-end align-items-baseline ">
+                <div className="search d-flex justify-content-end align-items-baseline ">
                     <Search onSearch={handleOnSearch} value={value} />
                     <Cart
                         countCart={countCart}

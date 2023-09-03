@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import Button from "../common/Button";
+import NavigationLink from "../common/NavigationLink";
 
 const Card = ({ card, onCountCart, path, onDelete }) => {
     return (
@@ -25,14 +25,9 @@ const Card = ({ card, onCountCart, path, onDelete }) => {
                             ? (
                                 <>
                                     <Button className={"btn btn-success"}>
-                                        <NavLink
-                                            to={`/${card._id}`}
-                                            className="nav-link text-decoration-underline"
-                                            activeClassName="selected"
-                                            style={{ color: "white" }}
-                                        >
+                                        <NavigationLink path={`/${card._id}`}>
                                         Посмотреть
-                                        </NavLink>
+                                        </NavigationLink>
                                     </Button>
                                     <Button
                                         className={"btn btn-success mt-2"}
@@ -45,14 +40,11 @@ const Card = ({ card, onCountCart, path, onDelete }) => {
                             : (
                                 <>
                                     <Button className={"btn btn-success"}>
-                                        <NavLink
-                                            to={`/cardeditgood/${card._id}`}
-                                            className="nav-link text-decoration-underline"
-                                            activeClassName="selected"
-                                            style={{ color: "white" }}
+                                        <NavigationLink
+                                            path={`/cardeditgood/${card._id}`}
                                         >
                                         Редактировать
-                                        </NavLink>
+                                        </NavigationLink>
                                     </Button>
                                     <Button
                                         className={"btn btn-success mt-2"}

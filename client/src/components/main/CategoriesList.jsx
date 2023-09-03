@@ -15,7 +15,7 @@ const CategoriesList = ({ cardsInfo, onCategoryItems, onBack }) => {
 
     return (
         <>
-            <ol className="list-group list-group-numbered">
+            <ol className="list list-group list-group-numbered">
                 <div className="mx-auto fw-bold fs-2 text-white">
                     Category list
                 </div>

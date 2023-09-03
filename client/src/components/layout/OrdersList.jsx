@@ -27,10 +27,10 @@ const OrdersList = () => {
     return (
         <>
             <div className="login d-flex justify-content-center align-items-center">
-                <div className="row justify-content-md-center">
-                    <div className="col-md-auto md-3 p-4 shadow mt-5 bg-white mb-5 rounded-4">
-                        <div className="d-flex justify-content-center">
-                            <div className="d-flex  flex-column mx-auto justify-content-center align-items-center mt-2">
+                <div className="row order-list justify-content-md-center">
+                    <div className=" order-list col-md-auto md-3 p-4 shadow mt-5 bg-white mb-5 rounded-4">
+                        <div className="order-list d-flex justify-content-center">
+                            <div className="order-list d-flex  flex-column mx-auto justify-content-center align-items-center mt-2">
                                 {!isOrderLoading &&
                                 order &&
                                 order.length > 0
@@ -39,8 +39,8 @@ const OrdersList = () => {
                                             <div className="mb-2">
                                                 <h2>Список заказов</h2>
                                             </div>
-                                            <div className="table-responsive">
-                                                <table className="table align-middle">
+                                            <div className="order-list table-responsive">
+                                                <table className="order-list table align-middle">
                                                     <TableHeader
                                                         date={
                                                             configFile.columsForOrderList

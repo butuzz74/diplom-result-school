@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsLoggedIn, logOut } from "../../store/usersSlice";
 import { clearListOrder } from "../../store/orderSlice";
 import Avatar from "./Avatar";
+import NavigationLink from "./NavigationLink";
 
 const NavBar = () => {
     const dispatch = useDispatch();
@@ -23,54 +24,27 @@ const NavBar = () => {
             <div className="navline">
                 <ul className="nav nav-pills mt-2 d-flex justify-content-center me-5">
                     <li className="nav-item">
-                        <NavLink
-                            to="/"
-                            className="nav-link text-decoration-underline"
-                            activeClassName="selected"
-                            style={{ color: "white" }}
-                        >
+                        <NavigationLink path={"/"}>
                             На главную страницу
-                        </NavLink>
+                        </NavigationLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink
-                            to="/paymentAndDelivery"
-                            className="nav-link text-decoration-underline"
-                            activeClassName="selected"
-                            style={{ color: "white" }}
-                        >
+                        <NavigationLink path={"/paymentAndDelivery"}>
                             Оплата и доставка
-                        </NavLink>
+                        </NavigationLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink
-                            to="/aboutUs"
-                            className="nav-link text-decoration-underline"
-                            activeClassName="selected"
-                            style={{ color: "white" }}
-                        >
-                            О нас
-                        </NavLink>
+                        <NavigationLink path={"/aboutUs"}>О нас</NavigationLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink
-                            to="/contactInfo"
-                            className="nav-link text-decoration-underline"
-                            activeClassName="selected"
-                            style={{ color: "white" }}
-                        >
+                        <NavigationLink path={"/contactInfo"}>
                             Контакты
-                        </NavLink>
+                        </NavigationLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink
-                            to="/signin"
-                            className="nav-link text-decoration-underline"
-                            activeClassName="selected"
-                            style={{ color: "white" }}
-                        >
+                        <NavigationLink path={"/signin"}>
                             Войти/Зарегистрироваться
-                        </NavLink>
+                        </NavigationLink>
                     </li>
                 </ul>
             </div>

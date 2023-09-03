@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MainPageContextProvider } from "./context/context";
-import AuthProvider from "./hooks/useAuth";
 import { ToastContainer } from "react-toastify";
 import { getCurrentUser, getIsLoggedIn } from "./store/usersSlice";
 import localStorageService from "./service/localStorage.service";
@@ -40,67 +39,60 @@ function App() {
     }, []);
     return (
         <div className="maincontainer">
-            <AuthProvider>
-                <NavBar />
-                <div className="innercontent">
-                    <MainPageContextProvider>
-                        <Switch>
-                            <ProtectedRoute
-                                path="/order/:orderId"
-                                component={OrderItem}
-                            />
-                            <ProtectedRoute
-                                admin={currentUser ? currentUser.admin : null}
-                                path="/cardaddgood"
-                                component={EditGoodsList}
-                            />
-                            <ProtectedRoute
-                                admin={currentUser ? currentUser.admin : null}
-                                path="/goodsaddtest"
-                                component={GoodAddAndUpdate}
-                            />
-                            <ProtectedRoute
-                                admin={currentUser ? currentUser.admin : null}
-                                path="/cardeditgood/:cardId?"
-                                component={GoodAddAndUpdate}
-                            />
-                            <ProtectedRoute
-                                path="/ordercard"
-                                component={OrderCard}
-                            />
-                            <ProtectedRoute
-                                path="/orderslist"
-                                component={OrdersList}
-                            />
-                            <ProtectedRoute
-                                path="/basket"
-                                component={BasketList}
-                            />
-                            <ProtectedRoute
-                                path="/profile"
-                                component={ProfileCard}
-                            />
-                            <Route path="/signup" component={SignUp} />
-                            <Route path="/edit" component={EditProfile} />
-                            <Route
-                                path="/paymentAndDelivery"
-                                component={PaymentAndDelivery}
-                            />
-                            <Route
-                                path="/contactInfo"
-                                component={ContactInfo}
-                            />
-                            <Route path="/aboutUs" component={AboutUs} />
-                            <Route path="/signin" component={SignIn} />
-                            <Route path="/:cardId" component={CardItem} />
-                            <Route path="/" exact component={Main} />
-                            <Route path= "/404" component={NotFound} />
-                            <Redirect to="/404"/>
-                        </Switch>
-                    </MainPageContextProvider>
-                </div>
-                <Footer />
-            </AuthProvider>
+            <NavBar />
+            <div className="innercontent">
+                <MainPageContextProvider>
+                    <Switch>
+                        <ProtectedRoute
+                            path="/order/:orderId"
+                            component={OrderItem}
+                        />
+                        <ProtectedRoute
+                            admin={currentUser ? currentUser.admin : null}
+                            path="/cardaddgood"
+                            component={EditGoodsList}
+                        />
+                        <ProtectedRoute
+                            admin={currentUser ? currentUser.admin : null}
+                            path="/goodsaddtest"
+                            component={GoodAddAndUpdate}
+                        />
+                        <ProtectedRoute
+                            admin={currentUser ? currentUser.admin : null}
+                            path="/cardeditgood/:cardId?"
+                            component={GoodAddAndUpdate}
+                        />
+                        <ProtectedRoute
+                            path="/ordercard"
+                            component={OrderCard}
+                        />
+                        <ProtectedRoute
+                            path="/orderslist"
+                            component={OrdersList}
+                        />
+                        <ProtectedRoute path="/basket" component={BasketList} />
+                        <ProtectedRoute
+                            path="/profile"
+                            component={ProfileCard}
+                        />
+                        <Route path="/signup" component={SignUp} />
+                        <Route path="/edit" component={EditProfile} />
+                        <Route
+                            path="/paymentAndDelivery"
+                            component={PaymentAndDelivery}
+                        />
+                        <Route path="/contactInfo" component={ContactInfo} />
+                        <Route path="/aboutUs" component={AboutUs} />
+                        <Route path="/signin" component={SignIn} />
+                        <Route path="/:cardId" component={CardItem} />
+                        <Route path="/" exact component={Main} />
+                        <Route path="/404" component={NotFound} />
+                        <Redirect to="/404" />
+                    </Switch>
+                </MainPageContextProvider>
+            </div>
+            <Footer />
+
             <ToastContainer />
         </div>
     );
