@@ -26,7 +26,7 @@ const goodsSlice = createSlice({
             state.isLoading = false;
         },
         goodByIdReceived: (state, action) => {
-            state.entities.goods = [...action.payload];
+            state.entities.goodById = action.payload;
             state.isLoading = false;
         },
         create: (state, action) => {
