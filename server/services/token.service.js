@@ -15,7 +15,7 @@ class TokenService {
         };
     }
     async save(userId, refreshToken) {
-        const data = await Token.findOne({ user: userId });
+        const data = await Token.findOne({ user: userId });        
         if (data) {
             data.refreshToken = refreshToken;
             return data.save();

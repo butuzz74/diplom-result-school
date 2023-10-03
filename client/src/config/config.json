@@ -1,6 +1,6 @@
 {
     "apiEndpointForFirebase": "https://my-graduate-work-7fde2-default-rtdb.europe-west1.firebasedatabase.app/",
-    "apiEndpoint": "http://213.148.1.12/api/",
+    "apiEndpoint": "http://31.129.33.170/api/",
     "isFireBase": false,
     "category": ["projectors", "monitor", "videowall", "screen"],
     "markBirdRed": "https://byprint.by/wp-content/uploads/2021/06/ff489f49.jpg", 
